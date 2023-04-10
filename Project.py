@@ -1,11 +1,18 @@
 # libraries used
 import os
-from re import L
 from tkinter import *
+from re import L
 from turtle import bgcolor
 from typing_extensions import Self
 from PIL import ImageTk,Image
 from tkinter import ttk
+
+# python modules for various aspects of the project
+# module for user defined class 
+import UserDefinedClass 
+import config 
+
+config.init()
 
 from pyparsing import col
 
@@ -42,21 +49,15 @@ def start(data):
 
     last()
     
-# global variables
-global x
-global y
-global z
-global ROW1
-global COL1
-global n
+
 
 # intial values of global variables
-x=600
-y=600
-z=8
-ROW1=2
-COL1=0
-n=1
+# x=600
+# y=600
+# UserDefinedClass.z=8
+# ROW1=2
+# COL1=0
+# n=1
 
 
 g=open("numbers.txt","r")
@@ -223,44 +224,44 @@ class line2():
         self.canvas.create_line(x//2,40,x//2+5,35) 
 
 # class for creating a variable of particular data type
-class create:
+# class create:
     
-    global x
-    global y
-    global z
-    global ROW1
-    global COL1
+#     global x
+#     global y
+#     global z
+#     global ROW1
+#     global COL1
     
-    def __init__(self,dtype,name,value=None):
-        self.dtype = dtype
-        self.name = name
-        self.value = value
-        self.canvas = None
+#     def __init__(self,dtype,name,value=None):
+#         self.dtype = dtype
+#         self.name = name
+#         self.value = value
+#         self.canvas = None
     
-    def draw(self,area):
-        if(z==1):
-            self.canvas = Canvas(area,width=x,height=40,bg="white",highlightthickness=0)
-            self.canvas.grid(row=ROW1,column=COL1,columnspan=z)
-            self.canvas.create_rectangle(x//2-30,0, x//2+30,30,fill="#7B9E89")
-            self.canvas.create_text(x//2,15,text=str(self.name) +' = '+ str(self.value) )
-            self.canvas.create_line(x//2,30,x//2,40)
-            self.canvas.create_line(x//2,40,x//2-5,35)
-            self.canvas.create_line(x//2,40,x//2+5,35)
+#     def draw(self,area):
+#         if(z==1):
+#             self.canvas = Canvas(area,width=x,height=40,bg="white",highlightthickness=0)
+#             self.canvas.grid(row=ROW1,column=COL1,columnspan=z)
+#             self.canvas.create_rectangle(x//2-30,0, x//2+30,30,fill="#7B9E89")
+#             self.canvas.create_text(x//2,15,text=str(self.name) +' = '+ str(self.value) )
+#             self.canvas.create_line(x//2,30,x//2,40)
+#             self.canvas.create_line(x//2,40,x//2-5,35)
+#             self.canvas.create_line(x//2,40,x//2+5,35)
 
-        self.canvas = Canvas(area,width=x,height=40,bg="white",highlightthickness=0)
-        self.canvas.grid(row=ROW1,column=COL1,columnspan=z)
-        self.canvas.create_rectangle(x//2-60,0, x//2+60,30,fill="#7B9E89")
-        self.canvas.create_text(x//2,15,text=str(self.name) +' = '+ str(self.value) )
-        self.canvas.create_line(x//2,30,x//2,40)
-        self.canvas.create_line(x//2,40,x//2-5,35)
-        self.canvas.create_line(x//2,40,x//2+5,35)
+#         self.canvas = Canvas(area,width=x,height=40,bg="white",highlightthickness=0)
+#         self.canvas.grid(row=ROW1,column=COL1,columnspan=z)
+#         self.canvas.create_rectangle(x//2-60,0, x//2+60,30,fill="#7B9E89")
+#         self.canvas.create_text(x//2,15,text=str(self.name) +' = '+ str(self.value) )
+#         self.canvas.create_line(x//2,30,x//2,40)
+#         self.canvas.create_line(x//2,40,x//2-5,35)
+#         self.canvas.create_line(x//2,40,x//2+5,35)
 
-    def parse(self,file):
+#     def parse(self,file):
         
-        if self.value:
-            file.write(f"{self.dtype} {self.name} = {self.value};\n")
-        else:
-            file.write(f"{self.dtype} {self.name};\n")
+#         if self.value:
+#             file.write(f"{self.dtype} {self.name} = {self.value};\n")
+#         else:
+#             file.write(f"{self.dtype} {self.name};\n")
 
 # class for assigning a variable a value
 class assign:
@@ -467,7 +468,7 @@ main.state("zoomed")
 main.config(bg="black")
 
 # icon at the top
-main.iconbitmap("2.ico")
+main.iconbitmap("C:/NOBLEAUSTINE/GitWorld/FlowToCpp/images/2.ico")
 
 # labelframe for placing program options
 top=LabelFrame(main,text="options",bg="#7D5C65",padx=10,pady=10)
@@ -555,14 +556,14 @@ s8=Canvas(area1,width=75,height=15,bg="white",highlightthickness=0)
 s8.grid(row=0,column=7)
 s8.create_text(35,7,text='7')
 
-st1=Canvas(area1,width=y,height=40,bg="white",highlightthickness=0)
+st1=Canvas(area1,width=config.y,height=40,bg="white",highlightthickness=0)
 st1.grid(row=1,column=0,columnspan=8)
 
-st1.create_oval(y//2-60,5,y//2+60,30,fill="#83f28f")
-st1.create_text(y//2,18,text= "START" )
-st1.create_line(y//2,30,y//2,40)
-st1.create_line(y//2,40,y//2-5,35)
-st1.create_line(y//2,40,y//2+5,35)
+st1.create_oval(config.y//2-60,5,config.y//2+60,30,fill="#83f28f")
+st1.create_text(config.y//2,18,text= "START" )
+st1.create_line(config.y//2,30,config.y//2,40)
+st1.create_line(config.y//2,40,config.y//2-5,35)
+st1.create_line(config.y//2,40,config.y//2+5,35)
 
 
 # functions called while using tools buttons
